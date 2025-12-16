@@ -790,6 +790,7 @@ void periodic_battery_report(void)
     uint8_t  crc;
     uint16_t crc_start_index;
     uint16_t crc_len;
+    uint16_t chg_raw = 0;
 
     /* 9 个 16bit 数，按大端顺序输出 */
     int val_cycle        = BQ40Z50_Read_CycleCount();
@@ -814,7 +815,7 @@ void periodic_battery_report(void)
     #define CHG_STATUS_FULL_MASK       (1 << 5)
 
     if (val_chg_status >= 0) {
-        uint16_t chg_raw = (uint16_t)val_chg_status;
+        chg_raw = (uint16_t)val_chg_status;
 
         if (chg_raw & CHG_STATUS_CHARGING_MASK) {
             /* 充电中：闪烁灯 */

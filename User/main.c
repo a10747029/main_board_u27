@@ -30,6 +30,7 @@ uint8_t need_process_command  = 0;
 uint8_t need_periodic_report  = 0;
 uint8_t need_report_adc       = 0;
 uint8_t host_bootup_ok        = 0;
+uint32_t now = 0;
 
 extern uint8_t adc_value[20];
 
@@ -67,7 +68,7 @@ int main(void)
             need_periodic_report = 0;
         }
 
-        uint32_t now = get_sys_ms();
+        now = get_sys_ms();
 #if 0
         if ((now - last_report_ms) >= 1000) {
             last_report_ms = now;
