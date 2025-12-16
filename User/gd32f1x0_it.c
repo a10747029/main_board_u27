@@ -114,8 +114,15 @@ void PendSV_Handler(void)
     \param[out] none
     \retval     none
 */
+volatile uint32_t sys_ms_tick = 0;
+
 void SysTick_Handler(void)
 {
+	sys_ms_tick++;
+}
+uint32_t get_sys_ms(void)
+{
+    return sys_ms_tick;
 }
 /*!
     \brief      this function handles USART RBNE interrupt request and TBE interrupt request

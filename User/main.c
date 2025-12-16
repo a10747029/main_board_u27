@@ -26,6 +26,7 @@ uint8_t need_periodic_report = 0;
 uint8_t need_report_adc = 0;
 uint8_t host_bootup_ok = 0;
 extern uint8_t adc_value[20];
+uint32_t last_report_ms = 0;
 int main(void)
 {		
 		nvic_irq_enable(USART0_IRQn, 0, 0);
@@ -55,6 +56,12 @@ int main(void)
 				periodic_report();
 				need_periodic_report = 0;
 			}
+			uint32_t now = get_sys_ms();
+
+    			if ((now - last_report_ms) >= 1000) {
+        			last_report_ms = now;
+        			printf("kelland see peridoc report\r\n");
+    			}
 			#if 0
 			if(need_report_adc)
 			{

@@ -36,7 +36,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 /* this function handles SysTick exception */
 void SysTick_Handler(void);
-
+uint32_t get_sys_ms(void);
 #endif /* GD32F1X0_IT_H */
 
 
