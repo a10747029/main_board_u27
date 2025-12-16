@@ -68,7 +68,7 @@ int main(void)
         }
 
         uint32_t now = get_sys_ms();
-
+#if 0
         if ((now - last_report_ms) >= 1000) {
             last_report_ms = now;
             /* 新增：1s 周期上报 */
@@ -76,7 +76,13 @@ int main(void)
             periodic_battery_report();
             printf("kelland see peridoc report\r\n");
         }
+#endif
 
+        if (need_report_adc) {
+            periodic_adc_report();
+            periodic_battery_report();
+            need_report_adc = 0;
+        }
 #if 0
         if (need_report_adc) {
             printf("%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x.\r\n",
