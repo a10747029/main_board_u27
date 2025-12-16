@@ -1,0 +1,12 @@
+serial port：  PA2，PA3
+serial port2：PA9，PA10
+
+5V0-core：PA4
+5V0-sys：PA1
+3V3-ULP：PA0
+
+3v3-sys：PA6
+12v-sys：PA5
+
+ringctrl:  PB1
+总结就是两个串口，多个gpio
